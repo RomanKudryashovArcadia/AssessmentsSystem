@@ -10,22 +10,23 @@ namespace AssessmentsSystem.BL.Randomization
 {
     public class DefaultTestletRandomizationStrategy : ITestletRandomizationStrategy
     {
+        private const int PRETEST_ITEMS_COUNT = 4;
+        private const int OPERATIONAL_ITEMS_COUNT = 6;
+        private const int COUNT_OF_FIRST_PRETEST_ITEMS = 2;
+
         private readonly int _pretestItemsCount;
         private readonly int _operationalItemsCount;
         private readonly int _countOfFirstPretestItems;
-        private readonly bool _shouldShuffleFirst;
         public readonly Random _random;
 
         public DefaultTestletRandomizationStrategy(
-            int pretestItemsCount = 4,
-            int operationalItemsCount = 6,
-            int countOfFirstPretestItems = 2,
-            bool shouldShuffleFirst = true)
+            int pretestItemsCount = PRETEST_ITEMS_COUNT,
+            int operationalItemsCount = OPERATIONAL_ITEMS_COUNT,
+            int countOfFirstPretestItems = COUNT_OF_FIRST_PRETEST_ITEMS)
         {
             _pretestItemsCount = pretestItemsCount;
             _operationalItemsCount = operationalItemsCount;
             _countOfFirstPretestItems = countOfFirstPretestItems;
-            _shouldShuffleFirst = shouldShuffleFirst;
             _random = new Random();
         }
 
@@ -55,10 +56,7 @@ namespace AssessmentsSystem.BL.Randomization
 
             var shuffledArray = sourceItemsList.ToArray();
 
-            if (_shouldShuffleFirst)
-            {
-                shuffledArray.Shuffle(_random);
-            }
+            shuffledArray.Shuffle(_random);
 
             var array = new Item[sourceItemsList.Count];
             var index = 0;
