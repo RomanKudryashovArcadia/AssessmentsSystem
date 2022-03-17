@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using AssessmentsSystem.BL.Exceptions;
 using AssessmentsSystem.BL.Interfaces.Randomization;
-using AssessmentsSystem.BL.Interfaces.Services;
+using AssessmentsSystem.BL.Randomization;
 using AssessmentsSystem.Model;
 
 namespace AssessmentsSystem.BL.Services
 {
-    public class TestletService : ITestletService
+    public class TestletService
     {
-        private ITestletRandomizationStrategy _testletRandomizationStrategy;
+        private readonly ITestletRandomizationStrategy _testletRandomizationStrategy;
 
-        public TestletService(ITestletRandomizationStrategy testletRandomizationStrategy)
+        public TestletService() : this(new DefaultTestletRandomizationStrategy())
         {
-            _testletRandomizationStrategy = testletRandomizationStrategy;
         }
 
-        public void SetTestletRandomizationStrategy(ITestletRandomizationStrategy testletRandomizationStrategy)
+        public TestletService(ITestletRandomizationStrategy testletRandomizationStrategy)
         {
             _testletRandomizationStrategy = testletRandomizationStrategy;
         }

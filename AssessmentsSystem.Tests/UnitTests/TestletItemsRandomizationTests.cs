@@ -32,14 +32,14 @@ namespace AssessmentsSystem.Tests.UnitTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestletItemsRandomization_ArgumentNullException()
         {
-            var testletService = new TestletService(new DefaultTestletRandomizationStrategy());
+            var testletService = new TestletService();
             testletService.GetRandomizedItems(null);
         }
 
         [TestMethod]
         public void TestletItemsRandomization_EmptyList()
         {
-            var testletService = new TestletService(new DefaultTestletRandomizationStrategy());
+            var testletService = new TestletService();
 
             var resultListOfItems = testletService.GetRandomizedItems(new List<Item>());
 
@@ -49,7 +49,7 @@ namespace AssessmentsSystem.Tests.UnitTests
         [TestMethod]
         public void TestletItemsRandomization_LengthsAreTheSame()
         {
-            var testletService = new TestletService(new DefaultTestletRandomizationStrategy());
+            var testletService = new TestletService();
 
             var testlet = CreateTestlet();
 
@@ -100,7 +100,7 @@ namespace AssessmentsSystem.Tests.UnitTests
         [TestMethod]
         public void TestletItemsRandomization_FirstItemsArePretests()
         {
-            var testletService = new TestletService(new DefaultTestletRandomizationStrategy());
+            var testletService = new TestletService();
 
             var testlet = CreateTestlet();
 
@@ -112,7 +112,7 @@ namespace AssessmentsSystem.Tests.UnitTests
         [TestMethod]
         public void TestletItemsRandomization_FirstPretestItemsAppearOnlyOnce()
         {
-            var testletService = new TestletService(new DefaultTestletRandomizationStrategy());
+            var testletService = new TestletService();
 
             var testlet = CreateTestlet();
 
@@ -135,7 +135,7 @@ namespace AssessmentsSystem.Tests.UnitTests
         [TestMethod]
         public void TestletItemsRandomization_ItemsAreRandomized()
         {
-            var testletService = new TestletService(new DefaultTestletRandomizationStrategy());
+            var testletService = new TestletService();
 
             var testlet = CreateTestlet();
 
